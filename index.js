@@ -1,8 +1,16 @@
-const app = require('./app')
-const PORT = 3000;
+const express  = require ('express');
+const app  = express ();
+//server creation
 
-app.listen(PORT , () =>{
+app.get('/', (req,res) => {
 
+       res.send('Home routes is Happen Here ');
 
-    console.log(`Server is running at http://localhost:${PORT}`);
 })
+
+app.listen(3000, ( req,res) => {
+
+    console.log(` Server is running at PORT 3000`);
+     
+  
+} )
