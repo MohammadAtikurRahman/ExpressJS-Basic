@@ -20,7 +20,7 @@ let notes = [
 //Home Routes
 app.get('/', (req,res) => {
 
-       res.send('Notes App Home Routes');
+       res.status(200).send('Notes App Home Routes');
 })
 //Notes Route
 app.get('/notes', (req,res) => {
@@ -28,7 +28,7 @@ app.get('/notes', (req,res) => {
    if(notes.length == 0){
        return res.send('No note has been created');
    }
-        res.send(notes);
+        res.status(200).send(notes);
 })
 //get single notes
 app.get('/notes/:noteId' , (req,res) => {
@@ -47,7 +47,7 @@ app.get('/notes/:noteId' , (req,res) => {
          return res.send(note);
   }
   else{
-          res.send('404 Not Found');
+          res.status(404).send('404 Not Found');
   }
 })
 
@@ -100,7 +100,7 @@ app.get('/notes/:noteId' , (req,res) => {
 // for unknown url
 app.get('*', (req,res) => {
 
-   res.send('404 Not Found');
+   res.status(404).send('404 Not Found');
    console.log('404 Not Found');
 
 
