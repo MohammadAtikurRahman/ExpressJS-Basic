@@ -5,14 +5,10 @@ const app  = express ();
 //Delete- Delete Data
 //Put-   Full Updated Data
 //Patch- Specific Data Updated
-
 // by default json data can not accept node js
-
-
 //middleware
 //json config for express
 app.use(express.json());
-
 let notes = [
      { 
             id:  1,
@@ -66,15 +62,10 @@ app.get('/notes/:noteId' , (req,res) => {
 //        }
 //        res.send(atik);
 // } )
-
-// app.get('/hello/:name', (req,res) => {
-     
-//        const name = req.params.name;
-    
+// app.get('/hello/:name', (req,res) => {   
+//        const name = req.params.name;   
 //        res.send(`Hello ${name}`);
-
 // })
-
 // adding notes
 app.post('/notes', (req,res) => {
    //post data add then post we can use by req.body
@@ -87,15 +78,24 @@ app.post('/notes', (req,res) => {
    //notes er moddhe ager notes copy kore rakhlam distrucre er maddhome
    // req.body er maddhome jei notun note pailam seitha eikhne add hoa thaklo
    res.send(notes);
+})
+app.put('/notes/:noteId', (req,res) => {
 
+       const noteId = parseInt(req.params.noteId);
+
+      const note = notes.find(note => note.id === noteId);
+      if(note){
+
+        //success updated
+
+      }else{
+  
+       //deal with not found
+
+      }
 
 
 })
-
-
-
-
-
 
 
 
