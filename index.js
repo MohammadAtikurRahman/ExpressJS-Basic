@@ -1,6 +1,13 @@
 const express  = require ('express');
 const app  = express ();
 //server creation
+
+
+//GET -  Read data
+//Post - Add data
+//Delete- Delete Data
+//Put-   Full Updated Data
+//Patch- Specific Data Updated
 app.get('/', (req,res) => {
        res.send('Home routes is Happen Here ');
 })
@@ -12,6 +19,19 @@ app.get('/signin', (req,res) => {
        }
        res.send(atik);
 } )
+
+
+app.get('/hello/:name', (req,res) => {
+     
+       const name = req.params.name;
+    
+       res.send(`Hello ${name}`);
+
+
+
+})
+
+
 
 // for unknown url
 app.get('*', (req,res) => {
