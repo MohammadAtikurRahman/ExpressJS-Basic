@@ -25,9 +25,11 @@ app.get('/', (req,res) => {
 //Notes Route
 app.get('/notes', (req,res) => {
   // This is from array object which i declared'  
-       // res.send(notes);
+   if(notes.length == 0){
+       return res.send('No note has been created');
+   }
+        res.send(notes);
 })
-
 //get single notes
 app.get('/notes/:noteId' , (req,res) => {
  //this noteId from browser
@@ -40,10 +42,13 @@ app.get('/notes/:noteId' , (req,res) => {
   //const noteid can be changed if i wish
   //................................
   // now mathcing note id which i given in the link and which i set in the array object
-     
   const note = notes.find(note => note.id === noteId )
-  res.send(note);
-
+  if(note){
+         return res.send(note);
+  }
+  else{
+          res.send('404 Not Found');
+  }
 })
 
 
