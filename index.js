@@ -71,7 +71,7 @@ app.post('/notes', (req,res) => {
    //post data add then post we can use by req.body
    // post data come via req.body
    const note = req.body;
-   console.log(note);
+//    console.log(note);
    //console.log(req.body);
    //console.log('adding note');
    notes = [...notes, note];
@@ -79,23 +79,57 @@ app.post('/notes', (req,res) => {
    // req.body er maddhome jei notun note pailam seitha eikhne add hoa thaklo
    res.send(notes);
 })
-app.put('/notes/:noteId', (req,res) => {
 
-       const noteId = parseInt(req.params.noteId);
 
+app.put( '/notes/:noteId', (req,res) => {
+      const noteId = parseInt(req.params.noteId);
+
+       
+      const noteInput = req.body;
       const note = notes.find(note => note.id === noteId);
       if(note){
-
         //success updated
+        notes = notes.map(note => {
 
-      }else{
+
+              if(note.id === noteId){
+               return {
+                            ...note,
+                            ...noteInput
+                     };
+              } 
+              else {
+
+                return note;
+              }
+
+
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      }
+      else{
   
        //deal with not found
 
       }
+     //server error
 
-
-})
+     })
 
 
 
